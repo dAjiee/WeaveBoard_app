@@ -67,8 +67,10 @@ export async function fetchUserPosts(userId: string) {
     connectToDB();
 
     // Find all weaves authored by the user with the given userId
-    const weaves = await User.findOne({ id: userId }).populate({
+    const weaves = await User.findOne({ id: userId })
+    .populate({
       path: "weaves",
+      options: { sort: { "createdAt" : 'desc'}},
       model: Weave,
       populate: [
         {
@@ -172,8 +174,8 @@ export async function getActivity(userId: string) {
     }).populate({
       path: "author",
       model: User,
-      select: "name image _id",
-    });
+      select: "name image _id createdAt",
+    }).sort({createdAt: "desc"});
 
     return replies;
   } catch (error) {
