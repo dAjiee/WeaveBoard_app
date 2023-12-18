@@ -47,7 +47,7 @@ const WeaveCard = ({
                                 src = {author.image}
                                 alt = "Profile image"
                                 fill
-                                className = "cursor-poiner rounded-full"
+                                className = "cursor-pointer rounded-full"
                             />
                         </Link>
 
@@ -83,7 +83,7 @@ const WeaveCard = ({
                 </div>
 
                 {/*delete weave*/}
-                {/*show comm lgoos*/}   
+                {/*show comm logos*/}   
             </div>
 
 

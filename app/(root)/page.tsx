@@ -1,12 +1,12 @@
 import WeaveCard from "@/components/cards/WeaveCard";
+import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchPosts } from "@/lib/actions/weave.actions";
 import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const result = await fetchPosts(1, 30);
   const user = await currentUser();
-
-  // console.log(result);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import '../globals.css'
 
 export const metadata = {
-    title: 'ChatWeave',
+    title: 'WeaveBoard',
     description: 'A Next.js 14 Social Media Application'
 }
 

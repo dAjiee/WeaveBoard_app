@@ -10,7 +10,7 @@ import Bottombar from '@/components/shared/Bottombar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'ChatWeave',
+  title: 'WeaveBoard',
   description: 'A Next.js 14 Social Media Application'
 }
 
