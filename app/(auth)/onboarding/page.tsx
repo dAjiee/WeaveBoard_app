@@ -8,15 +8,15 @@ async function Page() {
     if (!user) return null;
 
     const userInfo = await fetchUser(user.id);
-    if (userInfo?.onboarded) redirect("/");
+    if (userInfo?.onboarded) redirect('/');
 
     const userData = {
         id: user.id,
-        ojectId: userInfo?.id,
-        username: userInfo?.username || user?.username,
-        name: userInfo?.name || user?.firstName || "",
-        bio: userInfo?.bio || "",
-        image: userInfo?.image || user.imageUrl,
+        ojectId: userInfo?._id,
+        username: userInfo ? userInfo?.username : user.username,
+        name: userInfo ? userInfo?.name : user.firstName || "",
+        bio: userInfo ? userInfo?.bio : "",
+        image: userInfo ? userInfo?.image : user.imageUrl,
     }
 
     return (
@@ -26,12 +26,11 @@ async function Page() {
             </h1>
 
             <p className = "mt-3 text-base-regular text-light-2">
-                Complete your profile now to use ChatWeave
+                Complete your profile now to use WeaveBoard.
             </p>
 
             <section className="mt-9 bg-dark-2 p-10 rounded-lg">
-                <AccountProfile user={userData}
-                btnTitle = "Continue"/>
+                <AccountProfile user = {userData} btnTitle = "Continue"/>
             </section>
         </main>
     )

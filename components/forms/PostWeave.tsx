@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from "zod"
 import { usePathname, useRouter } from 'next/navigation';
+import { useOrganization} from '@clerk/nextjs';
 
 // import { updateUser } from '@/lib/actions/user.actions';
 import { WeaveValidation } from '@/lib/validations/weave';
@@ -37,6 +38,7 @@ interface Props {
 function PostWeave({ userId }: { userId: string }) {
     const router = useRouter();
     const pathname = usePathname();
+    const { organization } = useOrganization();
 
     const form = useForm({
         resolver: zodResolver(WeaveValidation),
@@ -50,7 +52,7 @@ function PostWeave({ userId }: { userId: string }) {
         await createWeave({
             text: values.weave,
             author: userId,
-            communityId: null,
+            communityId: organization ? organization.id: null,
             path: pathname
         });
 
