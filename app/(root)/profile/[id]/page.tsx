@@ -8,16 +8,16 @@ import Image from 'next/image';
 import WeavesTab from '@/components/shared/WeavesTab';
 
 
-async function Page({ params } : { params: {id: string}}) {
+async function Page({ params }: { params: { id: string } }) {
     const user = await currentUser();
-    if(!user) return null;
+    if (!user) return null;
 
     const userInfo = await fetchUser(params.id);
-    if(!userInfo?.onboarded) redirect('/onboarding');
+    if (!userInfo?.onboarded) redirect('/onboarding');
 
     return (
         <section>
-            <ProfileHeader 
+            <ProfileHeader
                 accountId={userInfo.id}
                 authUserId={user.id}
                 name={userInfo.name}
@@ -39,7 +39,7 @@ async function Page({ params } : { params: {id: string}}) {
                                     className="object-contain"
                                 />
 
-                                <p className = "max-sm:hidden">{tab.label}</p>
+                                <p className="max-sm:hidden">{tab.label}</p>
 
                                 {tab.label === 'Weaves' && (
                                     <p className="ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2">
@@ -49,16 +49,28 @@ async function Page({ params } : { params: {id: string}}) {
                             </TabsTrigger>
                         ))}
                     </TabsList>
-                    
-                    {profileTabs.map((tab) => (
-                        <TabsContent key={`content-${tab.label}`} value={tab.value} className="w-full text-light-1">
-                            <WeavesTab
-                                currentUserId={user.id}
-                                accountId={userInfo.id}
-                                accountType="User"
-                            />
-                        </TabsContent>
-                    ))}
+
+
+                    <TabsContent value="weaves" className="w-full text-light-1">
+                        <WeavesTab
+                            currentUserId={user.id}
+                            accountId={userInfo.id}
+                            accountType="User"
+                        />
+                    </TabsContent>
+
+                    <TabsContent value="replies" className="w-full text-light-1">
+                        <p className="mt-20 text-center text-heading3 font-bold text-light-1">
+                            To be added!
+                        </p>
+                    </TabsContent>
+
+                    <TabsContent value="tagged" className="w-full text-light-1">
+                        <p className="mt-20 text-center text-heading3 font-bold text-light-1">
+                            To be added!
+                        </p>
+                    </TabsContent>
+
 
                 </Tabs>
             </div>
