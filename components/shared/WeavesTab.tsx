@@ -3,13 +3,40 @@ import { redirect } from "next/navigation";
 import WeaveCard from "../cards/WeaveCard";
 import { fetchCommunityPosts } from "@/lib/actions/community.actions";
 
+interface Result {
+    name: string;
+    image: string;
+    id: string;
+    weaves: {
+      _id: string;
+      text: string;
+      parentId: string | null;
+      author: {
+        name: string;
+        image: string;
+        id: string;
+      };
+      community: {
+        id: string;
+        name: string;
+        image: string;
+      } | null;
+      createdAt: string;
+      children: {
+        author: {
+          image: string;
+        };
+      }[];
+    }[];
+  }
+
 interface Props {
     currentUserId: string;
     accountId: string;
     accountType: string;
 }
 
-const WeavesTab = async({currentUserId, accountId, accountType} : Props) => {
+async function WeavesTab({currentUserId, accountId, accountType} : Props) {
     let result: any;
 
     if(accountType === 'Community') {
@@ -33,7 +60,11 @@ const WeavesTab = async({currentUserId, accountId, accountType} : Props) => {
                         accountType === 'User'
                             ? {name: result.name, image: result.image, id:result.id}:{name: weave.author.name, image: weave.author.image, id: weave.author.id}
                     }
-                    community={weave.community} //Update
+                    community={
+                        accountType === "Community"
+                          ? { name: result.name, id: result.id, image: result.image }
+                          : weave.community
+                      }
                     createdAt={weave.createdAt}
                     comments={weave.children}
                 />

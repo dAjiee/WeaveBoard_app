@@ -1,10 +1,17 @@
 import WeaveCard from "@/components/cards/WeaveCard";
+import Pagination from "@/components/shared/Pagination";
+
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchPosts } from "@/lib/actions/weave.actions";
+
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export default async function Home() {
+async function Home({
+  searchParams,
+} : {
+  searchParams: { [key: string]: string | undefined};
+} ) {
   const user = await currentUser();
   // if (!user) redirect("/landing-page"); this is for landing page, checks if user is logged in alrd
   if (!user) return null;
@@ -12,8 +19,9 @@ export default async function Home() {
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  const result = await fetchPosts(1, 30);
-  
+  const result = await fetchPosts(
+    searchParams.page ? + searchParams.page : 1, 30
+  );
 
   return (
     <>
@@ -40,9 +48,15 @@ export default async function Home() {
           </>
         )
       }
-
       </section>
 
+      <Pagination
+        path='/'
+        pageNumber={searchParams.page ? + searchParams.page : 1}
+        isNext={result.isNext}
+      />
     </>
   )
 }
+
+export default Home;
