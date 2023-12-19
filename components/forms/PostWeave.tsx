@@ -15,11 +15,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from "zod"
 import { usePathname, useRouter } from 'next/navigation';
-import { useOrganization} from '@clerk/nextjs';
-
-// import { updateUser } from '@/lib/actions/user.actions';
+import { useOrganization } from '@clerk/nextjs';
 import { WeaveValidation } from '@/lib/validations/weave';
 import { createWeave } from '@/lib/actions/weave.actions';
+// import { useState } from 'react';
 
 interface Props {
     user: {
@@ -39,6 +38,7 @@ function PostWeave({ userId }: { userId: string }) {
     const router = useRouter();
     const pathname = usePathname();
     const { organization } = useOrganization();
+    // const [errorMessage, setErrorMessage] = useState('');
 
     const form = useForm({
         resolver: zodResolver(WeaveValidation),
@@ -49,15 +49,28 @@ function PostWeave({ userId }: { userId: string }) {
     })
 
     const onSubmit = async (values: z.infer<typeof WeaveValidation>) => {
-        await createWeave({
-            text: values.weave,
-            author: userId,
-            communityId: organization ? organization.id: null,
-            path: pathname
-        });
+        // const response = await fetch('/api/checkPostLimit.ts', {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ userId }),
+        //   });
+        
+        // const data = await response.json();
 
-        router.push("/")
-    }
+        // if (data.canPost) {
+            await createWeave({
+                text: values.weave,
+                author: userId,
+                communityId: organization ? organization.id : null,
+                path: pathname,
+            });
+            router.push("/");
+        // } else {
+        //     setErrorMessage('Error! Please wait for a while before posting again!');
+        // }
+    };
 
     return (
         <Form {...form}>
@@ -65,6 +78,7 @@ function PostWeave({ userId }: { userId: string }) {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="mt-10 flex flex-col justify-start gap-10"
             >
+                {/* {errorMessage && <div className="text-red-500">{errorMessage}</div>} */}
                 <FormField
                     control={form.control}
                     name="weave"
@@ -75,8 +89,8 @@ function PostWeave({ userId }: { userId: string }) {
                             </FormLabel>
                             <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
                                 <Textarea
-                                    rows = {15}
-                                    
+                                    rows={15}
+
                                     {...field}
                                 />
                             </FormControl>
@@ -86,7 +100,7 @@ function PostWeave({ userId }: { userId: string }) {
                 />
 
                 <Button type="submit"
-                className="bg-primary-500">
+                    className="bg-primary-500">
                     Post Weave
                 </Button>
 
