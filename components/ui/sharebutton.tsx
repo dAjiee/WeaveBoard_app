@@ -12,7 +12,8 @@ const ShareButtonClient = ({ weaveId, author }: { weaveId: string, author: strin
     // // Use the Web Share API if available
     if (navigator.share) {
         navigator.share({
-            title: `Check out this weave by ${author}`,
+            title: `Check out this weave by ${author} 📧`,
+            text: `Check out this weave by ${author} 📧`,
             url: urlToShare,
         }).catch((error) => {
             console.log('Error sharing', error);
