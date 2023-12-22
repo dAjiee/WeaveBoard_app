@@ -6,6 +6,7 @@
 @tailwind utilities;
 
 @layer components {
+
   /* main */
   .main-container {
     @apply flex min-h-screen flex-1 flex-col items-center bg-dark-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
@@ -92,6 +93,16 @@
   .rightsidebar {
     @apply sticky right-0 top-0 z-20 flex h-screen w-fit flex-col justify-between gap-12 overflow-auto border-l border-l-dark-4 bg-dark-2 px-10 pb-6 pt-28 max-xl:hidden;
   }
+
+  /* Topbar Landing Page*/
+  .topbar_landing {
+    @apply fixed top-0 z-30 flex w-full items-center justify-between backdrop-blur-lg px-10 py-5;
+  }
+
+  /* Bottombar Landing Page*/
+  .bottombar_landing {
+    @apply fixed bottom-0 z-10 w-full bg-glassmorphism p-5 md:p-10 backdrop-blur-lg;
+  }
 }
 
 @layer utilities {
@@ -124,9 +135,7 @@
   @apply max-sm:hidden;
 }
 
-.cl-organizationSwitcherTrigger
-  .cl-organizationPreview
-  .cl-organizationPreviewTextContainer {
+.cl-organizationSwitcherTrigger .cl-organizationPreview .cl-organizationPreviewTextContainer {
   @apply max-sm:hidden;
 }
 

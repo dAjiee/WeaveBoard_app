@@ -13,7 +13,7 @@ async function Home({
   searchParams: { [key: string]: string | undefined};
 } ) {
   const user = await currentUser();
-  // if (!user) redirect("/landing-page"); this is for landing page, checks if user is logged in alrd
+  if (!user) redirect("/landing-page"); //this is for landing page, checks if user is logged in already
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);

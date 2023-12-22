@@ -1,8 +1,8 @@
+
+
 async function Page() {
     return (
-        <>
-            <h1 className="head-text">landing Page</h1>
-        </>
+        <p className="text-white font-extrabold text-[63px] text-bold">Coming Soon!</p>
     )
 }
 
