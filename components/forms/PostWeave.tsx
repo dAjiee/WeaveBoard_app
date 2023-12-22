@@ -18,7 +18,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useOrganization } from '@clerk/nextjs';
 import { WeaveValidation } from '@/lib/validations/weave';
 import { createWeave } from '@/lib/actions/weave.actions';
-// import { useState } from 'react';
+import { useState } from 'react';
+import { getRemainingTime, updatePostCount } from '@/lib/postLimiter/postLimiter';
 
 interface Props {
     user: {
@@ -38,7 +39,7 @@ function PostWeave({ userId }: { userId: string }) {
     const router = useRouter();
     const pathname = usePathname();
     const { organization } = useOrganization();
-    // const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const form = useForm({
         resolver: zodResolver(WeaveValidation),
@@ -49,17 +50,18 @@ function PostWeave({ userId }: { userId: string }) {
     })
 
     const onSubmit = async (values: z.infer<typeof WeaveValidation>) => {
-        // const response = await fetch('/api/checkPostLimit.ts', {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ userId }),
-        //   });
-        
-        // const data = await response.json();
+        setErrorMessage('');
 
-        // if (data.canPost) {
+        const response = updatePostCount(userId);
+
+        if (!response) {
+            const timeRemaining = getRemainingTime(userId);
+            const minuteOrMinutes = timeRemaining === 1 ? 'minute' : 'minutes';
+
+            setErrorMessage(`Post Limit Reached! Please wait for ${timeRemaining} ${minuteOrMinutes} before posting again!`);
+            return;
+        }
+        else {
             await createWeave({
                 text: values.weave,
                 author: userId,
@@ -67,9 +69,7 @@ function PostWeave({ userId }: { userId: string }) {
                 path: pathname,
             });
             router.push("/");
-        // } else {
-        //     setErrorMessage('Error! Please wait for a while before posting again!');
-        // }
+        }
     };
 
     return (
@@ -78,7 +78,6 @@ function PostWeave({ userId }: { userId: string }) {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="mt-10 flex flex-col justify-start gap-10"
             >
-                {/* {errorMessage && <div className="text-red-500">{errorMessage}</div>} */}
                 <FormField
                     control={form.control}
                     name="weave"
@@ -98,6 +97,8 @@ function PostWeave({ userId }: { userId: string }) {
                         </FormItem>
                     )}
                 />
+
+                {errorMessage && <div className="text-red-500 text-base-medium">{errorMessage}</div>}
 
                 <Button type="submit"
                     className="bg-primary-500">

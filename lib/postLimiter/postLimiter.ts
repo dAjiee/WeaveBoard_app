@@ -4,21 +4,41 @@ type UserPostInfo = {
 };
 
 const postLimiterMap = new Map<string, UserPostInfo>();
+const postLimit = 10;
+const timeLimit = 1800000;
 
-export async function updatePostCount(userId: string): Promise<{ canPost: boolean }> {
+export function updatePostCount(userId: string): boolean {
   const currentTime = Date.now();
   const postInfo = postLimiterMap.get(userId);
 
-  if (!postInfo || currentTime - postInfo.firstPostTime > 1800000) {
+
+  if (!postInfo || currentTime - postInfo.firstPostTime > timeLimit) {
     postLimiterMap.set(userId, { count: 1, firstPostTime: currentTime });
-    return { canPost: true };
+    return true;
   }
 
-  if (postInfo.count >= 10) {
-    return { canPost: false };
+  if (postInfo.count >= postLimit) {
+    return false;
   }
 
   postInfo.count += 1;
   postLimiterMap.set(userId, postInfo);
-  return { canPost: true };
+  return true;
+}
+
+export function getRemainingTime(userId: string): number {
+  const postInfo = postLimiterMap.get(userId);
+  if (!postInfo) {
+    return 0;
+  }
+
+  const currentTime = Date.now();
+  const timePassed = currentTime - postInfo.firstPostTime;
+
+  if (postInfo.count >= postLimit && timePassed < timeLimit) {
+    const remainingTimeInMinutes = Math.ceil((timeLimit - timePassed) / 60000);
+    return remainingTimeInMinutes;
+  }
+
+  return 0;
 }
