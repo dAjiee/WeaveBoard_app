@@ -2,6 +2,7 @@ import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteWeave from "../forms/DeleteWeave";
+import ShareButton from "../ui/sharebutton";
 
 interface Props {
     id: string,
@@ -74,15 +75,7 @@ const WeaveCard = ({
                                 {/* Repost */}
                                 {/* <Image src="/assets/repost.svg" alt="repost" width={24} height={24} className="cursor-pointer object-contain"/> */}
 
-                                {/* Implement Link Copied Succesfully */}
-                                <Image
-                                    src="/assets/share.svg"
-                                    alt="share"
-                                    width={24}
-                                    height={24}
-                                    className="cursor-pointer object-contain"
-                                />
-
+                                <ShareButton weaveId={id} author={author.name} />
                             </div>
 
                             {isComment && comments.length > 0 && (
