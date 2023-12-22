@@ -101,7 +101,16 @@
 
   /* Bottombar Landing Page*/
   .bottombar_landing {
-    @apply fixed bottom-0 z-10 w-full bg-glassmorphism p-5 md:p-10 backdrop-blur-lg;
+    @apply relative bottom-0 z-10 w-full bg-glassmorphism p-5 md:p-10 backdrop-blur-lg;
+  }
+
+  /*Landing Page Background*/
+  .landing-page-background {
+    background-image: url('/assets/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
+    min-height: 100vh; /* Ensure it takes minimum full viewport height */
   }
 }
 

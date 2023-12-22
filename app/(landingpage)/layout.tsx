@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-dark-1`}>
+      <body className={`${inter.className} landing-page-background`}>
         <nav className="topbar_landing">
           <Link href="/sign-in" className="flex items-center gap-2">
             <Image
