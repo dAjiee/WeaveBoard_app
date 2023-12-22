@@ -30,16 +30,16 @@ export default function RootLayout({
           </Link>
           <div className="flex items-center justify-between gap-5">
             <Link href="/sign-in">
-              <div className="inline-flex items-start gap-[10px] px-[18px] py-[9px] relative bg-white rounded-[40px]">
-                <div className="relative w-fit mt-[-1.00px] font-bold text-black text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
-                  Sign In
+              <div className="inline-flex items-start gap-[10px] px-[18px] py-[9px] relative bg-primary-500 rounded-[40px]">
+                <div className="relative w-fit mt-[-1.00px] font-bold text-white text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
+                  Log In
                 </div>
               </div>
             </Link>
             <Link href="/sign-up">
-              <div className="inline-flex items-start gap-[10px] px-[18px] py-[9px] relative bg-primary-500 rounded-[40px]">
-                <div className="relative w-fit mt-[-1.00px] [font-family:'Source_Sans_Pro-Bold',Helvetica] font-bold text-white text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
-                  Log In
+              <div className="inline-flex items-start gap-[10px] px-[18px] py-[9px] relative bg-white rounded-[40px]">
+                <div className="relative w-fit mt-[-1.00px] [font-family:'Source_Sans_Pro-Bold',Helvetica] font-bold text-black text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
+                  Sign Up
                 </div>
               </div>
             </Link>
