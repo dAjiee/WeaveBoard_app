@@ -7,7 +7,7 @@ async function Page() {
         <div>
             <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-5 md:px-20 py-5">
                 <div className="flex flex-col justify-between items-start">
-                    <div className="text-indigo-400 text-base font-bold leading-tight mb-5 lg:mb-10">INTRODUCING</div>
+                    <div className="text-indigo-400 text-base font-bold leading-tight mb-5 lg:mb-10 drop-shadow-lg">INTRODUCING</div>
                     <div className="text-white text-[50px] md:text-[63px] font-bold leading-tight md:leading-snug mb-5 lg:mb-10">WeaveBoard</div>
                     <div className="text-white text-[15px] font-normal leading-snug">Your digital haven for authentic expression.<br />Dive into a supportive community where you can freely share your thoughts, vent, and connect with like-minded individuals. Embrace the power of unfiltered reflection and discover a space where your voice truly matters. <br /><br />Join WeaveBoard – where thoughts weave connections.</div>
                     <div className="flex justify-start mt-14 gap-5">
@@ -38,7 +38,9 @@ async function Page() {
                 </div>
             </section>
             
-            <section id="about-section" className="about-section-background">
+            <section id="about-section" 
+            // className="about-section-background"
+            >
                 {/* <div className="flex flex-col align-start justify-center px-5 md:px-40 py-20">
                     <div className="flex mb-5 lg:mb-10 justify-end">
                         <p className="text-white text-[63px] font-bold leading-tight md:leading-snug">About Us</p>
