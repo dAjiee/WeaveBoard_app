@@ -39,14 +39,14 @@ async function Page() {
             </section>
             
             <section id="about-section" className="about-section-background">
-                <div className="flex flex-col align-start justify-center px-5 md:px-40 py-20">
+                {/* <div className="flex flex-col align-start justify-center px-5 md:px-40 py-20">
                     <div className="flex mb-5 lg:mb-10 justify-end">
                         <p className="text-white text-[63px] font-bold leading-tight md:leading-snug">About Us</p>
                     </div>
                     <div className="flex px-40">
                         <p className="text-white text-[22px] font-normal leading-[49.20px]">We're Alexander, Vincent & Rolyn. Welcome to WeaveBoard, where authenticity meets community, and your voice finds its sanctuary.<br></br><br></br>At WeaveBoard, we believe in the power of genuine expression. Our mission is to provide a space where individuals can share their thoughts, vent without judgment, and connect with others on a deeper level. We strive to create a supportive community that values the diversity of perspectives and fosters meaningful connections.<br></br><br></br>Join the WeaveBoard Community: Ready to embark on a journey of self-expression and connection? Join WeaveBoard today and become part of a community where your thoughts weave the fabric of meaningful connections. Together, let's create a space where authenticity reigns supreme.</p>
                     </div>
-                </div>
+                </div> */}
             </section>
 
             <section id="team-section">
