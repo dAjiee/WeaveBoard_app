@@ -112,6 +112,15 @@
     /* background-position: center center; */
     min-height: 100vh; /* Ensure it takes minimum full viewport height */
   }
+
+  /*About Section Background*/
+  .about-section-background {
+    background-image: url('/assets/about-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
+    min-height: 100vh; /* Ensure it takes minimum full viewport height */
+  }
 }
 
 @layer utilities {

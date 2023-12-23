@@ -37,7 +37,7 @@ export default function RootLayout({
             </Link>
             <Link href="/sign-up">
               <div className="inline-flex items-start gap-[10px] px-[18px] py-[9px] relative bg-white rounded-[40px]">
-                <div className="relative w-fit mt-[-1.00px] [font-family:'Source_Sans_Pro-Bold',Helvetica] font-bold text-black text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
+                <div className="relative w-fit mt-[-1.00px] font-bold text-black text-[14px] text-right tracking-[-0.42px] leading-[22.2px] whitespace-nowrap">
                   Sign Up
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center pt-16 pb-7">
           {children}
         </div>
 
@@ -62,9 +62,13 @@ export default function RootLayout({
             <div className="hidden sm:flex flex-wrap mt-4 mb-4 md:mt-0 items-start gap-[75px] relative">
               <a href="/sign-in" className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">Sign In</a>
               <a href="/log-in" className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">Log In</a>
-              {/* Insert Hre Anchor for Team and About */}
-              <a className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">Team</a>
-              <a className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">About</a>
+              {/* Insert Here Anchor for Team and About */}
+              <Link href="#team-section">
+                <p className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">Team</p>
+              </Link>
+              <Link href="#about-section">
+                <p className="font-semibold text-white text-sm md:text-base leading-5 whitespace-nowrap">About</p>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:mt-7 px-10 justify-center md:justify-between items-center">
