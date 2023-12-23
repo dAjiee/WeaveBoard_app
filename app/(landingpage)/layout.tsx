@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs"
 import { Inter } from "next/font/google"
 import '../globals.css'
 import Link from "next/link"
@@ -69,10 +68,10 @@ export default function RootLayout({
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:mt-7 px-10 justify-center md:justify-between items-center">
-            <div className="font-bold text-white text-[63px] tracking-[-1.89px] leading-[74.2px] whitespace-nowrap mb-4 md:mb-0">
+            <div className="font-bold text-white text-[50px] sm:text-[63px] tracking-[-1.89px] leading-[74.2px] whitespace-nowrap mb-0">
               WeaveBoard
             </div>
-            <div className="font-medium text-white text-[16px] sm:text-[16px] tracking-[0] leading-[26px] text-center md:text-right">
+            <div className="font-medium text-white text-[14px] sm:text-[16px] tracking-[0] leading-[26px] text-center md:text-right">
               WeaveBoard
               <br />
               All Rights Reserved 2023
