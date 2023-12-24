@@ -110,7 +110,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     /* background-position: center center; */
-    min-height: 100vh; /* Ensure it takes minimum full viewport height */
+    min-height: 100vh;
+    /* Ensure it takes minimum full viewport height */
   }
 
   /*About Section Background*/
@@ -119,7 +120,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     /* background-position: center center; */
-    min-height: 100vh; /* Ensure it takes minimum full viewport height */
+    min-height: 100vh;
+    /* Ensure it takes minimum full viewport height */
   }
 }
 
@@ -145,6 +147,28 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #7878a3;
+  }
+
+  /*Divider*/
+  .custom-shape-divider-top-1703392949 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .custom-shape-divider-top-1703392949 svg {
+    position: relative;
+    display: block;
+    width: calc(192% + 1.3px);
+    height: 169px;
+    transform: rotateY(180deg);
+  }
+
+  .custom-shape-divider-top-1703392949 .shape-fill {
+    fill: #7371FF;
   }
 }
 
