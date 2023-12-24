@@ -4,7 +4,7 @@ import Link from "next/link";
 
 async function Page() {
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-5 md:px-20 py-5">
                 <div className="flex flex-col justify-between items-start">
                     <div className="text-indigo-400 text-base font-bold leading-tight mb-5 lg:mb-10 drop-shadow-lg">INTRODUCING</div>
@@ -50,7 +50,7 @@ async function Page() {
             </section>
 
             {/* Padding top should be 40 */}
-            <section id="team-section" className="relative">
+            <section id="team-section" className="relative mb-40">
                 <div className="custom-shape-divider-top-1703392949 opacity-50">
                     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                         <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="shape-fill"></path>
@@ -58,10 +58,66 @@ async function Page() {
                         <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="shape-fill"></path>
                     </svg>
                 </div>
-                
-                <div className="flex flex-col align-start justify-center mx-10 sm:mx-20 px-0 sm:px-5 lg:px-20 py-40">
-                    <div className="flex mb-5 lg:mb-10 justify-start">
+            </section>
+
+            <section className="flex flex-col align-center justify-between px-5 md:px-20 py-5">
+                <div className="relative flex flex-col align-start justify-center px-2 sm:px-5 lg:px-20">
+                    <div className="flex flex-col mb-5 lg:mb-10 justify-start">
                         <p className="text-white text-[30px] sm:text-[50px] md:text-[63px] font-bold leading-tight md:leading-snug">Meet our Team</p>
+                        <p className="text-white text:[12px] sm:text-[18px] md:text-[22px] py-10">Meet our dynamic team at WeaveBoard.</p>
+                    </div>
+                </div>
+
+                <div className="flex flex-col justify-center gap-5 px-2 sm:px-5 lg:px-20 mb-10 lg:mb-20">
+                    <div className="flex flex-col lg:flex-row border border-white justify-between items-center px-5 lg:px-20 py-10 gap-10">
+                        <div className="flex lg:flex-grow">
+                            <Image
+                                src="/assets/alex.svg"
+                                alt="Alex Photo"
+                                width={530}
+                                height={530}
+                                layout="responsive"
+                            />
+                        </div>
+                        <div className="flex flex-grow flex-col">
+                            <div className=" text-white text-lg font-semibold leading-[27px] mb-2">Project Lead and System Developer</div>
+                            <div className="text-white text-[32px] font-bold leading-10 mb-2">Alexander Vaugn Villasis</div>
+                            <div className="text-white text-base font-normal leading-tight">Meet our Project Lead and System Developer—an architect of the digital backbone that powers WeaveBoard. With expertise in coding, problem-solving, and system optimization, they ensure the seamless functionality of our platform, providing a robust and reliable experience for every user.</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col lg:flex-row-reverse border border-white justify-between items-center px-5 lg:px-20 py-10 gap-10">
+                        <div className="flex lg:flex-grow">
+                            <Image
+                                src="/assets/vincent.svg"
+                                alt="Alex Photo"
+                                width={530}
+                                height={530}
+                                layout="responsive"
+                            />
+                        </div>
+                        <div className="flex flex-grow flex-col">
+                            <div className=" text-white text-lg font-semibold leading-[27px] mb-2">UI/UX and Front End Developer</div>
+                            <div className="text-white text-[32px] font-bold leading-10 mb-2">Vincent Dialing</div>
+                            <div className="text-white text-base font-normal leading-tight">Say hello to our UI/UX and Front End  Developer, the creative mind behind the user interface and experience of WeaveBoard. Through a keen eye for design and an understanding of user behavior, they craft an intuitive and visually engaging platform, enhancing user interaction and satisfaction.</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col lg:flex-row border border-white justify-between items-center px-5 lg:px-20 py-10 gap-10">
+                        <div className="flex lg:flex-grow">
+                            <Image
+                                src="/assets/rolyn.svg"
+                                alt="Alex Photo"
+                                width={530}
+                                height={530}
+                                layout="responsive"
+                            />
+                        </div>
+                        <div className="flex flex-grow flex-col">
+                            <div className=" text-white text-lg font-semibold leading-[27px] mb-2">Documentation and Resource</div>
+                            <div className="text-white text-[32px] font-bold leading-10 mb-2">Rolyn Morales</div>
+                            <div className="text-white text-base font-normal leading-tight">Introducing our Documentation and Resource Specialist—a meticulous curator of information and support for our community. They work diligently to provide comprehensive documentation, valuable resources, and assistance, ensuring that our users have access to the knowledge they need to make the most of their WeaveBoard experience.</div>
+                        </div>
                     </div>
                 </div>
             </section>
